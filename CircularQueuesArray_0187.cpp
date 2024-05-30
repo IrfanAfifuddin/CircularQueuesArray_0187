@@ -45,7 +45,7 @@ public:
 		// cek apakah antrian kosong
 		if (FRONT == -1) {
 			cout << "Queue inderflow\n";
-			return
+			return;
 		}
 		cout << "\nThe element deleted from the queue is: " << queue_array[FRONT] << "\n";
 
@@ -55,6 +55,13 @@ public:
 			REAR = -1;
 		}
 
+		else {
+			// jika elemen yang dihapus berada di posisi terakhir array, kembali ke awal
+			if (FRONT == max - 1)
+				FRONT = 0;
+			else
+				FRONT = FRONT + 1;
+		}
 	}
 };
 
