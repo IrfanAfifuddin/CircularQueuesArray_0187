@@ -66,17 +66,90 @@ public:
 
 	void display() {
 
+		int FRONT_Position = FRONT;
+		int REAR_Position = REAR;
+
 		// cek apakah antrian kosong 
-		if (FRONT == -1) {
+		if (FRONT_Position == -1) {
 			cout << "Queue is empty\n";
 			return;
 		}
 
 		cout << "\nElements in the queue are...\n";
 
+		// jika FRONT <= REAR, iterasi dari front hingga REAR 
+		if (FRONT_Position <= REAR_Position) {
+			while (FRONT_Position <= REAR_Position) {
+				cout << queue_array[FRONT_Position] << " ";
+				FRONT_Position++;
+			}
+			cout << endl;
+		}
+
+		else {
+			// jika FRONT > REAR , iterasi dari FRONT hingga akhir array
+			while (FRONT <= max - 1) {
+				cout << queue_array[FRONT] << " ";
+				FRONT++;
+			}
+
+			FRONT = 0;
+
+			// iterasi dari awal array hingga REAR
+			while (FRONT <= REAR) {
+				cout << queue_array[FRONT] << " ";
+				FRONT++;
+			}
+			cout << endl;
+		}
+	}
 };
 
-int main()
-{
+int main() {
+	Queues q;
+	char ch;
+
+	while (true) {
+		try {
+			cout << "Menu" << endl;
+			cout << "1. Implement insert operation" << endl;
+			cout << "2. Implement delete operation" << endl;
+			cout << "3. Display values" << endl;
+			cout << "4. Exit" << endl;
+			cout << "Enter your choise (1-4): ";
+			cin >> ch;
+			cout << endl;
+
+			switch (ch) {
+			case '1': {
+				q.insert();
+				break;
+			}
+
+			case '2': {
+				q.remove();
+				break;
+			}
+
+			case '3': {
+				q.display();
+				break;
+			}
+
+			case '4': {
+				return 0;
+			}
+
+			default: {
+				cout << "Invalid option!!" << endl;
+				break;
+			}
+			}
+		}
+		catch (exception& e) {
+			cout << "Check fot the values entered." << endl;
+		}
+	}
    
+	return 0;
 }
