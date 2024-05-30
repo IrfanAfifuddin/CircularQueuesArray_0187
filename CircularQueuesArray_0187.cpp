@@ -63,6 +63,12 @@ public:
 				FRONT = FRONT + 1;
 		}
 	}
+
+	void display() {
+
+		// cek apakah antrian kosong 
+	}
+
 };
 
 int main()
